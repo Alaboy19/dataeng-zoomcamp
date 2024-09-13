@@ -162,5 +162,5 @@ cython_debug/
 #.idea/
 
 
-./ny_taxi_pg_data
-./data_pgadmin
+./ny_taxi_pg_data/
+./data_pgadmin/

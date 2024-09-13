@@ -71,13 +71,13 @@ if __name__ == '__main__':
     #Parsing arguments 
     parser = argparse.ArgumentParser(description='Loading data from .paraquet file link to a Postgres datebase.')
 
-    parser.add_argument('--user', help='Username for Postgres.')
-    parser.add_argument('--password', help='Password to the username for Postgres.')
-    parser.add_argument('--host', help='Hostname for Postgres.')
-    parser.add_argument('--port', help='Port for Postgres connection.')
-    parser.add_argument('--db', help='Databse name for Postgres')
-    parser.add_argument('--tb', help='Destination table name for Postgres.')
-    parser.add_argument('--url', help='URL for .paraquet file.')
+    parser.add_argument('--user', default=os.environ.get('USER'), help='Username for Postgres.')
+    parser.add_argument('--password', default=os.environ.get('PASSWORD'), help='Password to the username for Postgres.')
+    parser.add_argument('--host', default=os.environ.get('HOST'), help='Hostname for Postgres.')
+    parser.add_argument('--port', default=os.environ.get('PORT'), help='Port for Postgres connection.')
+    parser.add_argument('--db', default=os.environ.get('DB'), help='Databse name for Postgres')
+    parser.add_argument('--tb', default=os.environ.get('TB'), help='Destination table name for Postgres.')
+    parser.add_argument('--url', default=os.environ.get('URL'), help='URL for .paraquet file.')
 
     args = parser.parse_args()
     main(args)

@@ -1,3 +1,4 @@
+
 services:
   pgdatabase:
     image: postgres:13
@@ -18,17 +19,8 @@ services:
       - "8080:80"
     volumes:
       - ./data_pgadmin:/var/lib/pgadmin
-  taxi_ingest:
-    build:
-      context: .  # Assuming Dockerfile is in the same directory
-      dockerfile: Dockerfile  # Or specify the path if different
-    image: taxi_ingest:v001  # Optional, but good practice
-    environment:
-      - URL=https://d37ci6vzurychx.cloudfront.net/trip-data/yellow_tripdata_2024-01.parquet
-      - USER=root
-      - PASSWORD=root
-      - HOST=localhost
-      - PORT=5432
-      - DB=ny_taxi
-      - TB=yellow_taxi_trips
-    entrypoint: ["python", "data_loading_parquet.py"]
+  # taxi_ingest:
+  #   build: .   # Or specify the path if different
+  #   image: taxi_ingest:v001  # Optional, but good practice
+  #   depends_on:
+  #   - pgdatabase 
